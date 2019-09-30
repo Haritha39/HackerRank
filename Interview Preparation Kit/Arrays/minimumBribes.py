@@ -22,14 +22,14 @@ print( current )
 
 for eachKey in order:
     initial = [[] for _ in range(eachKey)]
-    for j in range(1,eachKey):
+    for j in range(0,eachKey+1):
         initial[j].append(j)
-        initial[j].append(j)
+        initial[j].append(j-1)
         initial[j].append(0)
 
     print(initial)
 
-    if ( current == initial ):
+    if ( current[eachKey] == initial ):
         output.append( sameOrNot( initial , current[eachKey] ) )
         print(output)
             
