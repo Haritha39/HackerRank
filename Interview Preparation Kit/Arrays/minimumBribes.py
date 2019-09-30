@@ -59,8 +59,7 @@ for eachKey in order:
     initial = []
     for j in range(1,eachKey+1):
         initial.append([j,j-1,0])
-        
-
+   
     print("initial : \n" , initial)
 
     if ( current[eachKey] == initial ):
