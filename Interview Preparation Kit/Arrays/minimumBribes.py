@@ -60,12 +60,17 @@ for eachOccur in current:
     initial = []
     for j in range(1,eachOccur[0]+1):
         initial.append([j,j-1,0])
+<<<<<<< HEAD
 
     present = []
     present = eachOccur[1]    
 
     # print("initial : \n" , initial )
     # print("present : \n" , present )
+=======
+   
+    print("initial : \n" , initial)
+>>>>>>> 5ae14b810d1d56df306f9eb74f893ab606cbea8e
 
     if ( present == initial ):
         output.append( sameOrNot( initial , present ) )
