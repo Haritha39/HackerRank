@@ -10,8 +10,12 @@ def checkList( current , value):
 
 def checkFromBack( initial , current ):
 
-    for back in range(len(initial)-1,0,-1):
+    back = len(initial)-2
+    while( back != -1 ):
+        print("back from prev ",back ," back " , back+1 , " initial ",initial)
+        back += 1
         if( initial[back][0] == current[back][0]):
+            back -= 2
             continue
         else:
             curIndex = checkList(current , initial[back][0])
@@ -31,11 +35,10 @@ def checkFromBack( initial , current ):
                     initial[swap-1][2] += 1
                     if( initial[swap-1][2]  > 2):
                         return False
-            back += 1
+            back -= 1
+            
 
     return initial
-
-                    
 
 
 
@@ -50,28 +53,29 @@ for i in range(tests):
     order.append(t)
     current.append([t,[]])
     for j in range(t):
-        current[i][1].append([int(input("enter val : ")) , j , 0])
-print("order : \n",order)
-print("current : \n" ,current )
+        current[i][1].append([int(input("enter val : ")),j,0])
+# print("current : \n" ,current )
 
-for eachKey in current:
-    print("eachKey : ",eachKey)
+for eachOccur in current:
     initial = []
-    for j in range(1,eachKey[0]+1):
+    for j in range(1,eachOccur[0]+1):
         initial.append([j,j-1,0])
-   
-    print("initial : \n" , initial)
-    print("current[eachKey][1] : ",current[eachKey][1])
 
-    if ( current[eachKey][1] == initial ):
-        output.append( sameOrNot( initial , current[eachKey][1] ) )
+    present = []
+    present = eachOccur[1]    
+
+    # print("initial : \n" , initial )
+    # print("present : \n" , present )
+
+    if ( present == initial ):
+        output.append( sameOrNot( initial , present ) )
     else:
-        result = checkFromBack( initial , current[eachKey][1] )
-        print("result : \n",result)
+        result = checkFromBack( initial , present )
+        # print("result : \n",result)
         if( result == False):
             output.append("Too chaotic")
         else:
-            current[eachKey][1] = result
+            present = result
             count = 0
             for each in result:
                 count += each[2]
