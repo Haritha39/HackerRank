@@ -42,35 +42,36 @@ def checkFromBack( initial , current ):
 
 tests = int(input("Enter number of test cases : ") )
 
-current = {}
+current = []
 order = []
 output = []
 for i in range(tests):
     t = int(input("enter t : "))
     order.append(t)
-    current[t]=[[] for _ in range(t)]
+    current.append([t,[]])
     for j in range(t):
-        current[t][j].append(int(input("enter val : ")))
-        current[t][j].append(j)
-        current[t][j].append(0)
+        current[i][1].append([int(input("enter val : ")) , j , 0])
+print("order : \n",order)
 print("current : \n" ,current )
 
-for eachKey in order:
+for eachKey in current:
+    print("eachKey : ",eachKey)
     initial = []
-    for j in range(1,eachKey+1):
+    for j in range(1,eachKey[0]+1):
         initial.append([j,j-1,0])
    
     print("initial : \n" , initial)
+    print("current[eachKey][1] : ",current[eachKey][1])
 
-    if ( current[eachKey] == initial ):
-        output.append( sameOrNot( initial , current[eachKey] ) )
+    if ( current[eachKey][1] == initial ):
+        output.append( sameOrNot( initial , current[eachKey][1] ) )
     else:
-        result = checkFromBack( initial , current[eachKey] )
+        result = checkFromBack( initial , current[eachKey][1] )
         print("result : \n",result)
         if( result == False):
-            output.append("Too Chaotic")
+            output.append("Too chaotic")
         else:
-            current[eachKey] = result
+            current[eachKey][1] = result
             count = 0
             for each in result:
                 count += each[2]
