@@ -15,7 +15,7 @@ def calculateWeightedMean( values , weights ):
 
     denominator = sum(weights)
 
-    weightedMean = numerator / denominator
+    weightedMean = round(numerator / denominator,1)
 
     return weightedMean
 
