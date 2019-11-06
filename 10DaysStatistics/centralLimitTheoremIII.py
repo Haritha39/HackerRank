@@ -4,6 +4,8 @@ sample mean is mean of population
 sample standard deviation  = given sd / sqrt(n)
 z score = (X - mean) / (sd/sqrt(n))
 
+Lower A = mean-zscore*sd 
+Upper B = mean+zscore*sd 
 """
 
 import math
